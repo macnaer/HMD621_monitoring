@@ -2,7 +2,7 @@ services:
   nagios:
     build: ./nagios
     image: hmd621/nagios-core:4.5.14
-    container_name: nagios
+    container_name: hmd621-nagios
     restart: unless-stopped
     # Host networking: SNMP requests leave the host with its own address (10.7.99.103),
     # and Apache sees the real client addresses.
