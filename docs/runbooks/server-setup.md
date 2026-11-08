@@ -63,6 +63,7 @@ Set `NAGIOS_ADMIN_PASSWORD` to a strong password. The `.env` file is ignored by 
 | `NAGIOS_ADMIN_USER` | Web UI login |
 | `NAGIOS_ADMIN_PASSWORD` | Web UI password (required) |
 | `CERT_IP` | IP address in the self-signed certificate |
+| `SNMP_RO_COMMUNITY` | SNMPv2c read-only community configured on the router |
 
 ## 5. Build and start
 
@@ -83,6 +84,16 @@ Expected result: no errors in the summary.
 ## 7. Open the web UI
 
 From a host in `10.7.0.0/16`, open `https://10.7.99.103/nagios/`. The browser warns about the self-signed certificate. Check that the address matches `CERT_IP`, then accept the warning. Log in with `NAGIOS_ADMIN_USER` and `NAGIOS_ADMIN_PASSWORD`.
+
+## 6a. Check SNMP access to the router
+
+```bash
+cd ~/HMD621_monitoring/docker
+docker compose exec nagios /usr/local/nagios/libexec/check_snmp -H 10.7.0.101 -P 2c -C "$(grep '^SNMP_RO_COMMUNITY=' .env | cut -d= -f2-)" -o .1.3.6.1.2.1.1.3.0
+docker compose exec nagios /usr/local/nagios/libexec/check_cisco_mem.sh 10.7.0.101 "$(grep '^SNMP_RO_COMMUNITY=' .env | cut -d= -f2-)" 85 95
+```
+
+Both commands must return `OK`. If the first one times out, check the router ACL and the route between `10.7.99.103` and `10.7.0.101`.
 
 ## Updates
 

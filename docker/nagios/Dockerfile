@@ -47,6 +47,8 @@ RUN mkdir -p /usr/local/nagios/etc/conf.d /certs \
 
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 COPY supervisord.conf /etc/supervisord.conf
+COPY plugins/check_cisco_mem.sh /usr/local/nagios/libexec/check_cisco_mem.sh
+RUN chmod 755 /usr/local/nagios/libexec/check_cisco_mem.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
 EXPOSE 443
