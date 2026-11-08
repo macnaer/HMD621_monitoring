@@ -6,6 +6,9 @@
 *.key
 secrets/
 
+# Generated certificates
+docker/certs/
+
 # Editor and OS files
 .vscode/
 .idea/
