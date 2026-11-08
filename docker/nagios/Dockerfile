@@ -43,6 +43,8 @@ RUN mkdir -p /usr/local/nagios/etc/conf.d /certs \
  && a2dissite 000-default \
  && a2enmod ssl cgi rewrite \
  && a2ensite default-ssl \
+ && echo "ServerName localhost" > /etc/apache2/conf-available/servername.conf \
+ && a2enconf servername \
  && sed -i 's#/etc/ssl/certs/ssl-cert-snakeoil.pem#/certs/nagios.crt#; s#/etc/ssl/private/ssl-cert-snakeoil.key#/certs/nagios.key#' /etc/apache2/sites-available/default-ssl.conf
 
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
