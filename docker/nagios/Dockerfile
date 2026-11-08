@@ -10,7 +10,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update \
  && apt-get install -y --no-install-recommends \
       apache2 apache2-utils build-essential ca-certificates libcap2-bin libgd-dev \
-      libssl-dev openssl snmp supervisor unzip wget \
+      libssl-dev libapache2-mod-php openssl php snmp supervisor unzip wget \
  && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p /tmp/build && cd /tmp/build \
