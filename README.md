@@ -18,7 +18,7 @@ Phase 1 covers one device: a Cisco ISR4431/K9 running IOS-XE 17.9.5a at `10.7.0.
 | CPU check (80/90%) | Implemented, OID index confirmed, server verification pending |
 | Interface checks (Gi0/0/0, Gi0/0/1, Service-Engine0/4/0) | Implemented, server verification pending |
 | Temperature check | Not supported by the ISR4431 (SNMP reports no object) |
-| Thruk web interface | Deferred, depends on Livestatus build |
+| Thruk web interface | Decided in [ADR 0002](docs/adr/0002-thruk-livestatus.md), implementation pending |
 | Telegram notifications | Deferred |
 | LibreNMS and SNMP traps | Deferred |
 | Hikvision cameras and Linux servers | Later phases |
