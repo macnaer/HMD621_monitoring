@@ -25,6 +25,10 @@ The operator runs these commands on the server. The agent has no server access a
 | Change the admin password | Edit `NAGIOS_ADMIN_PASSWORD` in `.env`, then run `docker compose up -d` |
 | Regenerate the certificate | `rm -f certs/nagios.crt certs/nagios.key`, then `docker compose restart nagios` |
 
+## Planned: Thruk web UI
+
+ADR 0002 (`docs/adr/0002-thruk-livestatus.md`) decides the UI stack: a separate Thruk container on `0.0.0.0:443`, Nagios CGI moved to `127.0.0.1:8080`, Livestatus socket in a shared volume at `/run/livestatus`. Until it is implemented, the current CGI interface on port 443 keeps working as described above. Do not change ports or add containers for Thruk without following that ADR.
+
 ## Rules
 
 - Validate with `nagios -v` before every restart. Do not restart after a failed validation.
