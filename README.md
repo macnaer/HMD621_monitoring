@@ -15,7 +15,9 @@ Phase 1 covers one device: a Cisco ISR4431/K9 running IOS-XE 17.9.5a at `10.7.0.
 | Nagios Core 4.5.14 in Docker | Implemented and running |
 | Nagios web interface (CGI and PHP) | Implemented, PHP fix pending verification |
 | ICMP, uptime, and memory checks | Implemented, SNMP results pending |
-| CPU, interface, and temperature checks | Planned, needs SNMP walk |
+| CPU check (80/90%) | Implemented, OID index confirmed, server verification pending |
+| Interface checks (Gi0/0/0, Gi0/0/1, Service-Engine0/4/0) | Implemented, server verification pending |
+| Temperature check | Not supported by the ISR4431 (SNMP reports no object) |
 | Thruk web interface | Deferred, depends on Livestatus build |
 | Telegram notifications | Deferred |
 | LibreNMS and SNMP traps | Deferred |

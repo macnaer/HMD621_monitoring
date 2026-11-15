@@ -41,9 +41,9 @@ Do not configure SNMP traps unless the user approves the traps phase.
 | ICMP reachability | host check `check-host-alive` | Implemented |
 | Uptime | `check_snmp_uptime` | Implemented, server verification pending |
 | Memory | `check_cisco_mem.sh` | Implemented, server verification pending |
-| CPU (5 minutes) | `cpmCPUTotal5minRev` | Planned, needs walk for the index |
-| Interfaces | `ifOperStatus` for physical interfaces | Planned, needs walk for the list |
-| Temperature | CISCO-ENVMON-MIB | Planned, only if the device reports it |
+| CPU (5 minutes) | `check_snmp_cpu`, `cpmCPUTotal5minRev` index 7 confirmed | Implemented, server verification pending |
+| Interfaces | `check_snmp_ifoper` on ifIndexes 1, 2, 7 (admin up) | Implemented, server verification pending |
+| Temperature | CISCO-ENVMON-MIB | Not supported by the device (walk returns No Such Object) |
 
 ## Verification
 
